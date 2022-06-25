@@ -54,7 +54,7 @@ const Actors = () => {
       </Grid>
       <Box margin="2rem 0">
         <Typography variant="h3" gutterBottom align="center">Movies</Typography>
-        { movies && <MovieList movies={movies} numberOfMovies={12} /> }
+        { movies && <MovieList movies={movies} /> }
         <Pagination currentPage={page} setPage={setPage} totalPages={movies?.total_pages} />
       </Box>
     </>
