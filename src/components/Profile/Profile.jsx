@@ -23,8 +23,6 @@ const Profile = () => {
     window.location.href = '/';
   };
 
-  console.log('profile', favoriteMovies, watchlistMovies);
-
   return (
     <Box>
       <Box display="flex" justifyContent="space-between">
