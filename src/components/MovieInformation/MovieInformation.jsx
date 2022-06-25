@@ -11,6 +11,7 @@ import { MovieList } from '..';
 import { useGetMovieQuery, useGetRecommendationsQuery, useGetListQuery } from '../../services/TMDB';
 import useStyles from './styles';
 import { userSelector } from '../../features/auth';
+import { SESSION_ID } from '../../constants';
 
 const getMovieTrailerVideoKey = (videosList) => {
   if (videosList && videosList.length > 0) {
@@ -29,8 +30,8 @@ const MovieInformation = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { data, isFetching, error } = useGetMovieQuery(id);
-  const { data: favoriteMovies, refetch: refetchFavorites } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
-  const { data: watchlistMovies, refetch: refetchWatchlisted } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
+  const { data: favoriteMovies, refetch: refetchFavorites } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem(SESSION_ID), page: 1 });
+  const { data: watchlistMovies, refetch: refetchWatchlisted } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem(SESSION_ID), page: 1 });
   const { data: recommendations, isFetching: isFetchingRecommendations } = useGetRecommendationsQuery({ list: '/recommendations', movie_id: id });
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const MovieInformation = () => {
 
   const addToFavourites = async () => {
     await axios.post(
-      `https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem('session_id')}`,
+      `https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem(SESSION_ID)}`,
       {
         media_type: 'movie',
         media_id: id,
@@ -62,7 +63,7 @@ const MovieInformation = () => {
 
   const addToWatchlist = async () => {
     await axios.post(
-      `https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem('session_id')}`,
+      `https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem(SESSION_ID)}`,
       {
         media_type: 'movie',
         media_id: id,
