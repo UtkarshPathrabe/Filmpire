@@ -5,11 +5,13 @@ import { ExitToApp } from '@mui/icons-material';
 import { userSelector } from '../../features/auth';
 import { useGetListQuery } from '../../services/TMDB';
 import { RatedCards } from '..';
+import { SESSION_ID } from '../../constants';
+import { logoutUser } from '../../utils';
 
 const Profile = () => {
   const { user } = useSelector(userSelector);
-  const { data: favoriteMovies, refetch: refetchFavorites } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
-  const { data: watchlistMovies, refetch: refetchWatchlisted } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem('session_id'), page: 1 });
+  const { data: favoriteMovies, refetch: refetchFavorites } = useGetListQuery({ listName: 'favorite/movies', accountId: user.id, sessionId: localStorage.getItem(SESSION_ID), page: 1 });
+  const { data: watchlistMovies, refetch: refetchWatchlisted } = useGetListQuery({ listName: 'watchlist/movies', accountId: user.id, sessionId: localStorage.getItem(SESSION_ID), page: 1 });
 
   useEffect(() => {
     refetchFavorites();
@@ -17,7 +19,7 @@ const Profile = () => {
   }, []);
 
   const logout = () => {
-    localStorage.clear();
+    logoutUser();
     window.location.href = '/';
   };
 
