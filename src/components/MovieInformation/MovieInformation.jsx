@@ -118,7 +118,7 @@ const MovieInformation = () => {
         <Typography variant="h5" gutterBottom style={{ marginTop: '10px' }}>Overview</Typography>
         <Typography style={{ marginBottom: '2rem' }}>{data?.overview}</Typography>
         <Typography variant="h5" gutterBottom>Top Cast</Typography>
-        <Grid item container spacing={2} justifyContent="center">
+        <Grid item container spacing={2} justifyContent="flex-start">
           {data?.credits?.cast?.map((character, i) => (
             character?.profile_path && (
             <Grid key={i} item xs={4} md={2} component={Link} to={`/actors/${character?.id}`} style={{ textDecoration: 'none' }}>
