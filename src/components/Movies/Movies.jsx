@@ -12,7 +12,7 @@ const Movies = () => {
 
   useEffect(() => {
     setPage(1);
-  }, [genreIdOrCategoryName]);
+  }, [genreIdOrCategoryName, searchQuery]);
 
   if (isFetching) {
     return (
