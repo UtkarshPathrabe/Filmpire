@@ -11,6 +11,7 @@ import { Search, Sidebar } from '..';
 import { setUser, userSelector } from '../../features/auth';
 import useStyles from './styles';
 import { ColorModeContext } from '../../utils/ToggleColorMode';
+import { REQUEST_TOKEN, SESSION_ID } from '../../constants';
 
 const NavBar = () => {
   const { isAuthenticated, user } = useSelector(userSelector);
@@ -21,8 +22,8 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const colorMode = useContext(ColorModeContext);
 
-  const token = localStorage.getItem('request_token');
-  const sessionIdFromLocalStorage = localStorage.getItem('session_id');
+  const token = localStorage.getItem(REQUEST_TOKEN);
+  const sessionIdFromLocalStorage = localStorage.getItem(SESSION_ID);
 
   useEffect(() => {
     const loginUser = async () => {
