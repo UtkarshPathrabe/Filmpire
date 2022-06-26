@@ -3,6 +3,7 @@ import { Box, Typography, Card, CardContent, CardMedia } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 import useStyles from './styles';
+import { TMDB_IMAGE_PATH } from '../../constants';
 
 const FeaturedMovie = ({ movie }) => {
   const classes = useStyles();
@@ -13,7 +14,7 @@ const FeaturedMovie = ({ movie }) => {
         <CardMedia
           media="picture"
           alt={movie?.title}
-          image={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}
+          image={`${TMDB_IMAGE_PATH}/original/${movie?.backdrop_path}`}
           title={movie?.title}
           className={classes.cardMedia}
         />
