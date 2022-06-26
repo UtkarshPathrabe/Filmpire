@@ -3,6 +3,7 @@ import { Typography, Grid, Grow, Tooltip, Rating } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 import useStyles from './styles';
+import { TMDB_IMAGE_PATH } from '../../constants';
 
 const Movie = ({ movie, i }) => {
   const classes = useStyles();
@@ -13,7 +14,7 @@ const Movie = ({ movie, i }) => {
           <img
             alt={movie.title}
             className={classes.image}
-            src={(movie.poster_path) ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : 'https://www.fillmurray.com/200/300'}
+            src={(movie.poster_path) ? `${TMDB_IMAGE_PATH}/w500/${movie.poster_path}` : 'https://www.fillmurray.com/200/300'}
           />
           <Typography className={classes.title} variant="h5">
             {movie.title}
