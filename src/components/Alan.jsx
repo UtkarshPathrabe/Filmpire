@@ -20,7 +20,6 @@ const useAlan = () => {
           fetchToken();
         } else if (command === 'logout') {
           logoutUser();
-          window.location.href = '/';
         }
       },
     });
