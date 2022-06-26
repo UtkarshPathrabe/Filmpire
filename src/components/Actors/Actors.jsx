@@ -5,6 +5,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useGetActorDetailsQuery, useGetMoviesByActorIdQuery } from '../../services/TMDB';
 import useStyles from './styles';
 import { MovieList, Pagination } from '..';
+import { TMDB_IMAGE_PATH } from '../../constants';
 
 const Actors = () => {
   const { id } = useParams();
@@ -36,7 +37,7 @@ const Actors = () => {
     <>
       <Grid container spacing={3}>
         <Grid item lg={5} xl={4}>
-          <img className={classes.image} src={`https://image.tmdb.org/t/p/w780/${data?.profile_path}`} alt={data?.name} />
+          <img className={classes.image} src={`${TMDB_IMAGE_PATH}/w780/${data?.profile_path}`} alt={data?.name} />
         </Grid>
         <Grid item lg={7} xl={8} style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
           <Typography variant="h2" gutterBottom>{data?.name}</Typography>
