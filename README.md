@@ -1,6 +1,8 @@
 Filmpire
 ========
 
+[Live Application](https://utkarsh-filmpire.netlify.app/)  
+
 Filmpire application is created using ReactJS, Redux, Material UI and Alan AI.  
 Filmpire is an application where you can find the movies you love.  
 You can check the top rated, popular and upcoming movies or search for a specific movie or filter movies by genre.  
