@@ -72,8 +72,12 @@ export default makeStyles((theme) => ({
     justifyContent: 'center',
   },
   video: {
-    width: '50%',
-    height: '50%',
+    width: '60%',
+    height: '60%',
+    [theme.breakpoints.down('md')]: {
+      width: '75%',
+      height: '75%',
+    },
     [theme.breakpoints.down('sm')]: {
       width: '90%',
       height: '90%',
