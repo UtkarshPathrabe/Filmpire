@@ -11,7 +11,7 @@ import { MovieList } from '..';
 import { useGetMovieQuery, useGetRecommendationsQuery, useGetListQuery } from '../../services/TMDB';
 import useStyles from './styles';
 import { userSelector } from '../../features/auth';
-import { SESSION_ID } from '../../constants';
+import { SESSION_ID, TMDB_API_BASE_URL, TMDB_IMAGE_PATH } from '../../constants';
 
 const getMovieTrailerVideoKey = (videosList) => {
   if (videosList && videosList.length > 0) {
@@ -51,7 +51,7 @@ const MovieInformation = () => {
 
   const addToFavourites = async () => {
     await axios.post(
-      `https://api.themoviedb.org/3/account/${user.id}/favorite?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem(SESSION_ID)}`,
+      `${TMDB_API_BASE_URL}/account/${user.id}/favorite?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem(SESSION_ID)}`,
       {
         media_type: 'movie',
         media_id: id,
@@ -63,7 +63,7 @@ const MovieInformation = () => {
 
   const addToWatchlist = async () => {
     await axios.post(
-      `https://api.themoviedb.org/3/account/${user.id}/watchlist?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem(SESSION_ID)}`,
+      `${TMDB_API_BASE_URL}/account/${user.id}/watchlist?api_key=${process.env.REACT_APP_TMDB_KEY}&session_id=${localStorage.getItem(SESSION_ID)}`,
       {
         media_type: 'movie',
         media_id: id,
@@ -94,7 +94,7 @@ const MovieInformation = () => {
   return (
     <Grid container className={classes.containerSpaceAround}>
       <Grid item sm={12} lg={4} style={{ display: 'flex', marginBottom: '30px' }}>
-        <img className={classes.poster} src={`https://image.tmdb.org/t/p/w500/${data?.poster_path}`} alt={data?.title} />
+        <img className={classes.poster} src={`${TMDB_IMAGE_PATH}/w500/${data?.poster_path}`} alt={data?.title} />
       </Grid>
       <Grid item container direction="column" lg={7}>
         <Typography variant="h3" align="center" gutterBottom>{data?.title} ({data.release_date.split('-')[0]})</Typography>
@@ -123,7 +123,7 @@ const MovieInformation = () => {
           {data?.credits?.cast?.map((character, i) => (
             character?.profile_path && (
             <Grid key={i} item xs={4} md={2} component={Link} to={`/actors/${character?.id}`} style={{ textDecoration: 'none' }}>
-              <img className={classes.castImage} src={`https://image.tmdb.org/t/p/w500/${character?.profile_path}`} alt={character?.name} />
+              <img className={classes.castImage} src={`${TMDB_IMAGE_PATH}/w500/${character?.profile_path}`} alt={character?.name} />
               <Typography color="textPrimary">{character?.name}</Typography>
               <Typography color="textSecondary">{character?.character?.split('/')[0]}</Typography>
             </Grid>
