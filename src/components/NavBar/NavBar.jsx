@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { AppBar, IconButton, Toolbar, Drawer, Button, Avatar, useMediaQuery } from '@mui/material';
+import { AppBar, IconButton, Toolbar, Drawer, Button, Avatar, useMediaQuery, Typography } from '@mui/material';
 import { Menu, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
@@ -17,7 +17,7 @@ const NavBar = () => {
   const { isAuthenticated, user } = useSelector(userSelector);
   const [mobileOpen, setMobileOpen] = useState(false);
   const classes = useStyles();
-  const isMobile = useMediaQuery('(max-width: 600px)');
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down('sm'));
   const theme = useTheme();
   const dispatch = useDispatch();
   const colorMode = useContext(ColorModeContext);
@@ -66,9 +66,14 @@ const NavBar = () => {
                 Login &nbsp; <AccountCircle />
               </Button>
             ) : (
-              <Button color="inherit" component={Link} to={`/profile/${user.id}`} className={classes.linkButton} onClick={() => {}}>
-                {!isMobile && <>My Movies &nbsp;</>}
-                <Avatar style={{ width: 30, height: 30 }} alt="Profile" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" />
+              <Button
+                color="inherit"
+                component={Link}
+                to={`/profile/${user.id}`}
+                className={classes.linkButton}
+              >
+                {!isMobile && <Typography variant="caption">My Movies &nbsp;</Typography>}
+                <Avatar style={{ width: 30, height: 30 }} alt="Profile" src={`https://www.themoviedb.org/t/p/w64_and_h64_face${user?.avatar?.tmdb?.avatar_path}`} />
               </Button>
             )}
           </div>
