@@ -20,7 +20,6 @@ const Profile = () => {
 
   const logout = () => {
     logoutUser();
-    window.location.href = '/';
   };
 
   return (
