@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { CssBaseline } from '@mui/material';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import useStyles from './styles';
 import useAlan from './Alan';
@@ -27,7 +27,8 @@ const App = () => {
           <Route exact path="/profile/:id">
             <Profile />
           </Route>
-          <Route exact path={['/', '/approved']}>
+          <Redirect from="/approved" to="/" />
+          <Route exact path="/">
             <Movies />
           </Route>
         </Switch>
