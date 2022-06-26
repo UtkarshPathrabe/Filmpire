@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { ACCOUNT_ID, REQUEST_TOKEN, SESSION_ID } from '../constants';
+import { ACCOUNT_ID, REQUEST_TOKEN, SESSION_ID, TMDB_API_BASE_URL } from '../constants';
 
 export const moviesApi = axios.create({
-  baseURL: 'https://api.themoviedb.org/3',
+  baseURL: TMDB_API_BASE_URL,
   params: {
     api_key: process.env.REACT_APP_TMDB_KEY,
   },
