@@ -41,4 +41,5 @@ export const logoutUser = () => {
   localStorage.removeItem(SESSION_ID);
   localStorage.removeItem(ACCOUNT_ID);
   localStorage.removeItem(REQUEST_TOKEN);
+  window.location.href = '/';
 };
