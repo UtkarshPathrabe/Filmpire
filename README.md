@@ -3,25 +3,16 @@ Filmpire
 
 [Live Application](https://utkarsh-filmpire.netlify.app/)  
 
-Filmpire application is created using ReactJS, Redux, Material UI and Alan AI.  
-Filmpire is an application where you can find the movies you love.  
-You can check the top rated, popular and upcoming movies or search for a specific movie or filter movies by genre.  
-You can interact with the application using Alan AI voice assistant and switch between `light` and `dark` themes.  
+The Filmpire application is built using ReactJS, Redux, Material UI, and Alan AI. It serves as a platform for discovering movies tailored to your preferences. Users can explore top-rated, popular, and upcoming movies, as well as search for specific films or filter them by genre. The application integrates with Alan AI's voice assistant for interactive functionality and supports both `light` and `dark` themes. Users can personalize their experience by marking movies as favorites and adding them to their watchlist. These customized lists are accessible on the user's profile page. Detailed information about movies, including trailers, cast, and similar films, can be accessed as well.  
 
 ![Dark Theme](./assets/01.png)  
 
-![Light Theme](./assets/02.png)  
-
-You can mark movies as favourite and add them to your watchlist. Your favourite and watchlisted movies list can be viewed on your profile page.  
+![Light Theme](./assets/02.png)   
 
 ![User Profile](./assets/06.png)
 
-You can take a look at a specific movie's  details, watch its trailer, cast and similar movies.   
-
 ![Movie Details](./assets/03.png)  
 
-![Movie Trailer](./assets/04.png)  
-
-You can also take a look at a specific cast details and their movies.  
+![Movie Trailer](./assets/04.png)   
 
 ![Cast Details](./assets/05.png)  
